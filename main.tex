@@ -1,0 +1,113 @@
+\documentclass[12pt]{ctexart}
+\usepackage{ructhesis}
+
+\papercode{RUC-BK-XXXXXX-XXXXXXXX}
+\title{标题}
+\subtitle{小标题}
+\author{XXX}
+\school{XX学院}
+\major{XXXX}
+\grade{XXXX级}
+\studentid{XXXXXXXXXX}
+\advisor{}
+\score{}
+
+\begin{document}
+
+\maketitle
+\makedeclare
+
+\keywords{关键词1 \quad 关键词2 \quad 关键词3}
+\enkeywords{Keyword1 \quad Keyword2 \quad Keyword3}
+
+\newpage
+\begin{abstract}
+这是一段摘要。
+\end{abstract}
+
+\begin{enabstract}
+This abstract.
+\end{enabstract}
+\newpage
+
+\tableofcontents
+\newpage
+
+\makedoc
+
+\section{引言}
+
+引言是论文的开场白，应简要介绍问研究的目的和意义、前人相关成果、本文要解决的主要问题，以及解决方案的主要思路和预期效果。
+
+正文是论文的主体。可分为若干章节，陈述相关工作调研、问题/需求分析、解决方案思路和内容、实验过程、结果和讨论等内容。应结构严谨、逻辑性强。
+
+\section{相关工作}
+
+BERT 是一个常用的预训练语言模型~\cite{devlin2018bert}。\footnote{脚注：\url{https://huggingface.co/google-bert/bert-base-uncased}}
+
+\section{方法}
+
+\subsection{问题定义}
+
+这是一段公式：
+\begin{equation}
+    E = mc^2
+\end{equation}
+
+\begin{itemize}
+    \item 项目列表
+    \item
+\end{itemize}
+
+\subsection{模型}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{templates/title.jpg}
+    \caption{图标题在图下方}
+    \label{fig:enter-label}
+\end{figure}
+
+
+\section{实验}
+
+\subsection{实验设置}
+
+\subsection{实验结果}
+
+\begin{table}[h]
+    \centering
+    \caption{表标题在表上方}
+    \begin{tabular}{@{}l|cccccc@{}}
+    \toprule
+    Model & dataset1 & dataset2 & dataset3 & dataset4 & dataset5 & \\
+    \midrule
+    1 & 100.0 & & & & & \\
+    2 & 99.0 & & & & & \\
+    3 & 98.0 & & & & & \\
+    4 & 97.0 & & & & & \\
+    \bottomrule
+    \end{tabular}
+    \label{tab:my_label}
+\end{table}
+
+\section{结论}
+
+\signature
+\newpage
+\addcontentsline{toc}{section}{参考文献}
+\bibliographystyle{gbt7714-numerical}
+\bibliography{references.bib}
+
+\newpage
+\addcontentsline{toc}{section}{附录}
+\section*{附录}
+\appendix
+\subsection*{附录1}
+
+\newpage
+\addcontentsline{toc}{section}{致谢}
+\section*{致谢}
+这里是致谢部分
+
+\end{document}

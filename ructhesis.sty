@@ -1,0 +1,215 @@
+\ProvidesPackage{ructhesis}
+
+% 数学符号相关
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{bm}
+% 表格相关
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{multirow}
+\RequirePackage{multicol}
+\RequirePackage{tabularx}
+% 图形相关
+\RequirePackage{float}
+\RequirePackage{graphicx}
+% 排版格式相关
+\RequirePackage{geometry}
+\RequirePackage{titlesec}
+\RequirePackage{setspace}
+\RequirePackage{fancyhdr}
+\RequirePackage{titletoc}
+
+\RequirePackage{appendix}
+\RequirePackage{hyperref}
+\RequirePackage{enumerate}
+\RequirePackage{tcolorbox}
+\RequirePackage{xcolor}
+\RequirePackage{caption}
+\RequirePackage{enumitem}
+\RequirePackage{comment}
+
+
+\RequirePackage[linesnumbered,ruled]{algorithm2e}
+\SetAlgoCaptionSeparator{}
+\renewcommand{\algorithmcfname}{算法}
+
+% 参考文献样式
+\RequirePackage{gbt7714}
+
+% 字体
+\RequirePackage[T1]{fontenc}
+\RequirePackage{fontspec}
+\RequirePackage{txfonts}
+\RequirePackage{xeCJK}
+% 将字体改为中易宋体和中易黑体
+\setCJKmainfont{simsun.ttc}[AutoFakeBold]
+\setCJKsansfont{simhei.ttf}[AutoFakeBold]
+\setCJKfamilyfont{hei}{simhei.ttf}[AutoFakeBold]
+\setCJKfamilyfont{song}{simsun.ttc}[AutoFakeBold]
+\renewcommand{\heiti}{\CJKfamily{hei}}
+\renewcommand{\songti}{\CJKfamily{song}}
+
+% 页边距
+\geometry{a4paper,bindingoffset=0.5cm,left=1.5cm,right=1.5cm,top=2cm,bottom=2cm}
+% 页眉页脚
+\pagestyle{fancy}
+\lhead{}\chead{\includegraphics[width=4.13cm,height=0.98cm]{templates/head.png}}\rhead{}
+\lfoot{}\rfoot{}
+% 图表标题 
+\captionsetup{font={small},labelfont={bf}}
+\captionsetup[table]{skip=3pt}
+\captionsetup[figure]{skip=3pt}
+% 图表编号按章节排序（可选）
+% \renewcommand {\thetable} {\thesection{}.\arabic{table}}
+% \renewcommand {\thefigure} {\thesection{}.\arabic{figure}}
+% 目录
+\titlecontents{section}[2.3em]{\heiti}{\contentslabel{2.3em}} {\hspace*{-2.3em}}{\titlerule*[1pc]{.}\contentspage}
+% 章节标题
+\titleformat{\section}{\centering \zihao{3} \heiti \bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\flushleft \zihao{4} \heiti \bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\flushleft \zihao{-4} \heiti \bfseries}{\thesubsubsection}{1em}{}
+
+% 分项标题
+\setlist[enumerate,1]{label=(\arabic*)}
+\setlist[enumerate,2]{label=\textcircled{\scriptsize\arabic*}}
+\setlist[enumerate,3]{label=(\alph*)}
+%圆形脚注
+\RequirePackage{pifont}
+\RequirePackage[perpage,symbol*]{footmisc}
+\DefineFNsymbols{circled}{{\ding{192}}{\ding{193}}{\ding{194}}{\ding{195}}{\ding{196}}{\ding{197}}{\ding{198}}{\ding{199}}{\ding{200}}{\ding{201}}}
+\setfnsymbol{circled}
+%目录和引用超链接
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black,
+}
+
+% 封面页
+\def\school#1{\def\@school{#1}}
+\def\major#1{\def\@major{#1}}
+\def\grade#1{\def\@grade{#1}}
+\def\studentid#1{\def\@studentid{#1}}
+\def\advisor#1{\def\@advisor{#1}}
+\def\score#1{\def\@score{#1}}
+\def\papercode#1{\def\@papercode{#1}}
+\def\subtitle#1{\def\@subtitle{#1}}
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+    \thispagestyle{fancy}\cfoot{}
+    \begin{flushright}
+      \heiti \textbf{论文编码：\@papercode}
+    \end{flushright}
+
+    \fontsize{28pt}{\baselineskip}\textbf{\heiti{中国人民大学本科毕业论文（设计）}}\par
+    \vspace{24mm}
+
+    \centering
+    \fontsize{28pt}{\baselineskip}\textbf{\heiti \@title}
+    \vspace{3mm}
+    \begin{spacing}{1.2}
+      \LARGE\selectfont{\textbf{\heiti \@subtitle}}
+    \end{spacing}
+    \flushleft
+    \vspace{48mm}
+    \begin{spacing}{2}\center
+      \heiti\fontsize{20pt}{0}
+      \textbf{作\qquad 者：\underline{\makebox[80mm][c]{\@author}}}\hfill\par
+      \textbf{学\qquad 院：\underline{\makebox[80mm][c]{\@school}}}\hfill\par
+      \textbf{专\qquad 业：\underline{\makebox[80mm][c]{\@major}}}\hfill\par
+      \textbf{年\qquad 级：\underline{\makebox[80mm][c]{\@grade}}}\hfill\par
+      \textbf{学\qquad 号：\underline{\makebox[80mm][c]{\@studentid}}}\hfill\par
+      \textbf{指导教师：\underline{\makebox[80mm][c]{\@advisor}}}\hfill\par
+      \textbf{论文成绩：\underline{\makebox[80mm][c]{\@score}}}\hfill\par
+      \textbf{完成日期：\underline{\makebox[80mm][c]{\@date}}}\hfill
+    \end{spacing}
+  \end{titlepage}
+}
+
+\def\keywords#1{\def\@keywords{#1}}
+\def\enkeywords#1{\def\@enkeywords{#1}}
+\renewcommand{\abstractname}{\textbf{ \heiti \fontsize{16pt}{0} \selectfont 摘要}}
+\renewenvironment{abstract}
+{\par\fontsize{12pt}{0}\noindent\mbox{}\hfill{\bfseries \abstractname}\hfill\mbox{}\par\vskip 2.5ex \setstretch{1.5}}
+{\par\vskip 2.5ex
+  \textbf{\heiti 关键词：} \@keywords
+  \par\vskip 2.5ex
+  \setcounter{page}{1}
+  \pagenumbering{Roman}
+  \cfoot{\thepage}
+  \newpage}
+
+\newcommand{\enabstractname}{\textbf{\fontsize{16pt}{0} \selectfont Abstract}}
+\newenvironment{enabstract}
+{\par\fontsize{12pt}{0}\noindent\mbox{}\hfill{\bfseries \enabstractname}\hfill\mbox{}\par\vskip 2.5ex \setstretch{1.5}}
+{\par\vskip 2.5ex
+  \textbf{Keywords:} \@enkeywords
+  \par\vskip 2.5ex \cfoot{\thepage} \newpage}
+
+\let\oldtoc\tableofcontents
+\renewcommand{\tableofcontents}{
+  \thispagestyle{fancy}
+  \renewcommand\contentsname{内容目录}
+  \renewcommand\listfigurename{插\ 图}
+  \renewcommand\listtablename{表\ 格}
+  \oldtoc
+  \newpage
+  \listoffigures
+  \listoftables
+  \cfoot{}
+}
+
+\newcommand{\makedeclare}{
+  % \newpage
+  \thispagestyle{fancy}\cfoot{}
+  \mbox{}
+  \vspace{14mm}
+  \begin{center}
+    \heiti \zihao{3} {中国人民大学学位论文原创性声明和使用授权说明}\par
+    \textbf{\songti \zihao{4} 原创性声明}
+  \end{center}
+  \vspace{5mm}\par
+  本人郑重声明：所呈交的学位论文，是本人在导师的指导下，独立进行研究工作所取得的成果。除文中已经注明引用的内容外，本论文不含任何其他个人或集体已经发表或撰写过的作品或成果。对本文的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。
+  \vspace{10mm}
+  \begin{spacing}{1.8}
+    \begin{flushright}
+      论文作者签名： \hspace*{21mm}\par
+      日期：\qquad 年\qquad 月\qquad 日
+    \end{flushright}
+  \end{spacing}
+  \vspace{34mm}
+  \begin{center}
+    \textbf{\songti \zihao{4} 学位论文使用授权说明}
+  \end{center}
+  \vspace{5mm}\par
+  本人完全了解中国人民大学关于收集、保存、使用学位论文的规定，即：
+  \begin{description}
+    \item[\Large{$\bullet$}] 按照学校要求提交学位论文的印刷本和电子版本；
+    \item[\Large{$\bullet$}] 学校可以公布论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存论文。
+  \end{description}
+  \vspace{10mm}
+  \begin{spacing}{1.8}
+    \begin{flushright}
+      论文作者签名： \hspace*{21mm}\par
+      指导教师签名： \hspace*{21mm}\par
+      日期：\qquad 年\qquad 月\qquad 日
+    \end{flushright}
+  \end{spacing}
+}
+
+\newcommand{\signature}{
+  \vspace{\fill} \noindent \heiti \fontsize{14pt}{0} \textbf{作者签名}：\underline{\makebox[50mm][c]{}}
+}
+
+% 正文格式
+\newcommand{\makedoc}{
+  \setstretch{1.25}
+  \setcounter{page}{1}
+  \pagenumbering{arabic}
+  \pagestyle{fancy}
+  \cfoot{\fontsize{10.5pt}{0} 第 \thepage 页}
+  \newpage
+}
