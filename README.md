@@ -7,6 +7,14 @@
 
 **注意**：LaTeX自带中文字体与Word字体有一定差异，因此手动导入宋体和黑体字体。
 
+## 示例图
+
+编译得到的PDF文件见`main.pdf`，如下图所示：
+
+![封面页](./figs/example1.jpg)
+
+![正文页](./figs/example2.jpg)
+
 ## 致谢
 
 本模板编写过程中有部分代码参考自[该项目](https://github.com/HughYau/RUCthesis-for-Bachelor) 。
